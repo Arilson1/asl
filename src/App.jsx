@@ -4,11 +4,13 @@ import Header from './components/Header';
 import Saldo from './components/Saldo';
 import Saque from './components/Saque';
 import Options from './components/Options';
+import Success from './components/Success';
 
 const conta = {
   saldo: 1000,
   saque:'',
   show: false,
+  success: false,
 }
 
 class App extends React.Component{
@@ -27,12 +29,16 @@ class App extends React.Component{
     }
 
     const sacar = () => {
-      const updateValue = this.state.saldo - this.state.saque;
-      this.setState({saldo: updateValue});
+        const updateValue = this.state.saldo - this.state.saque;
+        this.setState({saldo: updateValue, show: false, success: true});
     }
 
     const showOptions = () => {
-      this.setState({show: true});
+      if(this.state.saldo >= this.state.saque){
+        this.setState({show: true, success: false});
+      }else{
+        alert('Valor não permitido');
+      }
     }
 
     return(
@@ -41,6 +47,7 @@ class App extends React.Component{
         <Saldo saldo={this.state.saldo} />
         <Saque click={getValue} show={showOptions}/>
         {this.state.show && <Options sacar={sacar} value={this.state.saque} />}
+        {this.state.success && <Success />}
       </div>
     );
   }
