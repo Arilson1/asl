@@ -1,0 +1,18 @@
+.input {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    height: 40px;
+    width: 75%;
+    border: none;
+    border-bottom: 1px solid #242424;
+    padding: 5px 10px;
+    background: none;
+}
+
+input:focus{
+    border-bottom: 2px solid cornflowerblue;
+}
