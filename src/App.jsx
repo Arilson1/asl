@@ -8,6 +8,7 @@ import Options from './components/Options';
 const conta = {
   saldo: 1000,
   saque:'',
+  show: false,
 }
 
 class App extends React.Component{
@@ -23,7 +24,6 @@ class App extends React.Component{
     const getValue = (e) => {
       const saque = e.target.value;
       this.setState({ saque: saque });
-      console.log(saque)
     }
 
     const sacar = () => {
@@ -31,12 +31,16 @@ class App extends React.Component{
       this.setState({saldo: updateValue});
     }
 
+    const showOptions = () => {
+      this.setState({show: true});
+    }
+
     return(
       <div className="app">
         <Header />
         <Saldo saldo={this.state.saldo} />
-        <Saque click={getValue} />
-        <Options sacar={sacar} value={this.state.saque} />
+        <Saque click={getValue} show={showOptions}/>
+        {this.state.show && <Options sacar={sacar} value={this.state.saque} />}
       </div>
     );
   }

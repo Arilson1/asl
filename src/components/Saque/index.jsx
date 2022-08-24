@@ -17,7 +17,7 @@ const Saque = (props) => {
                 placeholder='Digite o valor do saque...'
                 change={props.click}
             />
-            <Button name='Continuar' />
+            <Button clickBtn={props.show} name='Continuar' />
         </div>
     )
 }
