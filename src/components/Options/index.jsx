@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
 import './options.css';
+import Title from '../../layout/Title';
 
 const Options = (props) => {
 
 const withdrawnValue = props.value
-const bankNotes = [100,50,20,10,5,2]
+const bankNotes = [200,100,50,20,10,5,2]
 
 var withdrawnBankNotes = []
 
@@ -51,10 +52,11 @@ const res = getNoteBankValue(withdrawnValue)
  
     return (
         <div className="options">
+            <Title title='Opções para saque:' />
             <ul>
                 {
                     res.map((item) => (
-                        item.map((note) => <li>{note["value"]} nota(s) de {note["key"]}</li>)
+                        item.map((note) => <li>{`${note["value"]} nota(s) de ${note["key"]}` + '' }</li>)
                     ))
                 }
             </ul>
