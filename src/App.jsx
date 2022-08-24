@@ -26,12 +26,17 @@ class App extends React.Component{
       console.log(saque)
     }
 
+    const sacar = () => {
+      const updateValue = this.state.saldo - this.state.saque;
+      this.setState({saldo: updateValue});
+    }
+
     return(
       <div className="app">
         <Header />
         <Saldo saldo={this.state.saldo} />
         <Saque click={getValue} />
-        <Options value={this.state.saque} />
+        <Options sacar={sacar} value={this.state.saque} />
       </div>
     );
   }

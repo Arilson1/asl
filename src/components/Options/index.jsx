@@ -56,7 +56,7 @@ const res = getNoteBankValue(withdrawnValue)
             <ul>
                 {
                     res.map((item) => (
-                        item.map((note) => <li>{`${note["value"]} nota(s) de ${note["key"]}` + '' }</li>)
+                        item.map((note) => <li onClick={props.sacar}>{`${note["value"]} nota(s) de ${note["key"]}` + '' }</li>)
                     ))
                 }
             </ul>
